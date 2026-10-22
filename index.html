@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>منوی آنلاین کیک و چیزکیک</title>
+  <meta name="description" content="منوی آنلاین و لیست قیمت روز کیک‌ها و چیزکیک‌های دست‌ساز">
+  <style>
+    @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+    :root {
+      --bg: #FAF8F5;
+      --surface: #FFFFFF;
+      --surface-soft: #F3EFE9;
+      --border: #E8E2D9;
+      --border-strong: #D5CBBF;
+      --text: #1E1B18;
+      --text-muted: #6E655D;
+      --text-subtle: #968B80;
+      --accent: #7A5435;
+      --accent-soft: rgba(122, 84, 53, 0.09);
+      --accent-contrast: #FFFFFF;
+      --ok: #1F6F4A;
+      --ok-soft: rgba(31, 111, 74, 0.11);
+      --badge-bg: #F4EFE8;
+      --badge-text: #594432;
+      --nav-bg: rgba(250, 248, 245, 0.88);
+      --shadow-sm: 0 2px 10px rgba(30, 27, 24, 0.04);
+      --shadow-md: 0 12px 32px rgba(30, 27, 24, 0.08);
+      --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.22);
+      --soldout-bg: rgba(255, 255, 255, 0.72);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #141210;
+      --surface: #1E1A17;
+      --surface-soft: #27221E;
+      --border: #312A24;
+      --border-strong: #463C34;
+      --text: #F4EEE6;
+      --text-muted: #B8ACA0;
+      --text-subtle: #8A7E72;
+      --accent: #D7B277;
+      --accent-soft: rgba(215, 178, 119, 0.14);
+      --accent-contrast: #1A1511;
+      --ok: #5AC896;
+      --ok-soft: rgba(90, 200, 150, 0.14);
+      --badge-bg: #29231E;
+      --badge-text: #E2C391;
+      --nav-bg: rgba(20, 18, 16, 0.88);
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.28);
+      --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.45);
+      --shadow-modal: 0 26px 65px rgba(0, 0, 0, 0.65);
+      --soldout-bg: rgba(20, 18, 16, 0.75);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding-bottom: 84px;
+    }
+
+    button, input, textarea, select { font-family: inherit; }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 18px; }
+
+    .top-bar { padding: 26px 0 18px; border-bottom: 1px solid var(--border); }
+    .top-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .brand-wrap { flex: 1; min-width: 0; }
+
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 11px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .brand-title {
+      font-size: clamp(21px, 4.5vw, 29px);
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      line-height: 1.3;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .brand-tagline { margin-top: 5px; font-size: 13px; color: var(--text-muted); font-weight: 400; }
+    .top-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+    .icon-btn {
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+
+    .admin-trigger {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    .btn-green {
+      background: #1F6F4A;
+      color: #FFFFFF;
+      border-color: #1F6F4A;
+      font-weight: 700;
+    }
+
+    .hidden { display: none !important; }
+
+    .sticky-controls {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .controls-inner { display: flex; flex-direction: column; gap: 10px; }
+
+    .tabs-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .tabs-row::-webkit-scrollbar { display: none; }
+
+    .tab-pill {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 12.5px;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .tab-pill.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+      font-weight: 700;
+    }
+
+    .search-view-row { display: flex; align-items: center; gap: 8px; }
+    .search-box { flex: 1; position: relative; }
+
+    .search-box input {
+      width: 100%;
+      height: 38px;
+      padding: 0 36px 0 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 12.8px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus { border-color: var(--accent); }
+    .search-box input::placeholder { color: var(--text-subtle); }
+
+    .search-icon {
+      position: absolute;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .view-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+
+    .view-toggle button {
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .view-toggle button.active { background: var(--surface-soft); color: var(--text); }
+
+    .menu-section { padding: 28px 0 8px; }
+
+    .sec-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sec-header h2 { font-size: 18px; font-weight: 800; color: var(--text); }
+    .sec-header p { font-size: 12px; color: var(--text-muted); }
+
+    .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 820px) { .items-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      background: var(--surface-soft);
+      overflow: hidden;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover .card-img-wrap img { transform: scale(1.03); }
+
+    .soldout-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--soldout-bg);
+      backdrop-filter: blur(2px);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .soldout-overlay span {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .card-body {
+      padding: 12px 13px 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 8px;
+    }
+
+    .card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+    .card-title { font-size: 14.2px; font-weight: 700; color: var(--text); line-height: 1.35; }
+
+    .serving-tag {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--badge-text);
+      background: var(--badge-bg);
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-desc {
+      font-size: 11.8px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price-label { font-size: 11px; color: var(--text-subtle); }
+    .price-val { font-size: 14.5px; font-weight: 800; color: var(--accent); }
+    .price-unit { font-size: 11px; font-weight: 400; color: var(--text-muted); margin-right: 3px; }
+
+    .items-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; }
+    @media (max-width: 760px) { .items-list { grid-template-columns: 1fr; gap: 10px; } }
+    .items-list .card { flex-direction: row; align-items: center; padding: 10px; gap: 12px; }
+    .items-list .card-img-wrap { width: 96px; height: 96px; aspect-ratio: 1 / 1; border-radius: 10px; flex-shrink: 0; }
+    .items-list .card-body { padding: 2px 0; gap: 5px; min-width: 0; }
+    .items-list .card-footer { padding-top: 5px; }
+
+    .order-info-box {
+      margin-top: 36px;
+      padding: 22px 24px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .order-info-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .order-info-box p { font-size: 12.5px; color: var(--text-muted); }
+    .social-links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .social-pill {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .social-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      inset-inline: 0;
+      z-index: 40;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+    }
+
+    .bottom-bar-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; }
+
+    .cta-primary, .cta-secondary {
+      flex: 1;
+      height: 44px;
+      border-radius: 11px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-primary { background: var(--text); color: var(--bg); }
+    .cta-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(5px);
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-modal);
+      animation: popIn 0.2s ease;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-img { position: relative; width: 100%; aspect-ratio: 5 / 4; background: var(--surface-soft); }
+    .modal-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.88);
+      color: #1E1B18;
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-content { padding: 18px 20px 20px; }
+    .modal-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .modal-title { font-size: 19px; font-weight: 800; }
+    .modal-desc { margin: 8px 0 16px; font-size: 13.2px; color: var(--text-muted); line-height: 1.75; }
+
+    .modal-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      margin-bottom: 14px;
+    }
+
+    .modal-actions { display: flex; gap: 8px; }
+
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px;
+    }
+
+    .admin-panel {
+      width: 100%;
+      max-width: 840px;
+      max-height: 92vh;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-modal);
+    }
+
+    .admin-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-soft);
+      overflow-x: auto;
+    }
+
+    .admin-tab {
+      padding: 7px 13px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12.2px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .admin-tab.active {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .admin-body { padding: 18px 20px; overflow-y: auto; flex: 1; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .field label {
+      display: block;
+      font-size: 11.8px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 8px 11px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .edit-item-row {
+      display: grid;
+      grid-template-columns: 56px 1.2fr 0.9fr 0.8fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 680px) { .edit-item-row { grid-template-columns: 52px 1fr 1fr; } }
+    .edit-item-row img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; }
+
+    .info-callout {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--ok-soft);
+      border: 1px solid var(--border);
+      font-size: 12.5px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .qr-preview-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 20px;
+      border-radius: 14px;
+      background: #FFFFFF;
+      color: #1E1B18;
+      border: 1px solid #E5E0D8;
+      max-width: 300px;
+      margin: 16px auto;
+      text-align: center;
+    }
+
+    .admin-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-toast { font-size: 12.2px; color: var(--accent); font-weight: 700; }
+    .empty-state { text-align: center; padding: 48px 16px; color: var(--text-muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="container">
+      <div class="top-row">
+        <div class="brand-wrap">
+          <div class="eyebrow-badge" id="elStandardBadge">استاندارد سرو: قالب کامل ۸ اسلایس</div>
+          <h1 class="brand-title" id="elBrandName" title="برای ورود به پنل مدیریت ۵ بار ضربه بزنید">کارگاه کیک و شیرینی دست‌ساز</h1>
+          <p class="brand-tagline" id="elTagline"></p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn admin-trigger hidden" id="btnOpenAdmin" type="button">
+            <span>مدیریت قیمت و QR</span>
+          </button>
+          <button class="icon-btn" id="btnThemeToggle" type="button" aria-label="تغییر حالت رنگ">
+            <span id="themeIcon">🌙</span>
+            <span id="themeLabel">تیره</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="sticky-controls">
+    <div class="container controls-inner">
+      <div class="tabs-row" id="categoryTabs"></div>
+      <div class="search-view-row">
+        <div class="search-box">
+          <span class="search-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <input type="search" id="searchInput" placeholder="جستجوی نام کیک یا ترکیبات (مثلاً پسته، کارامل، نوتلا، انار)...">
+        </div>
+        <div class="view-toggle" role="group" aria-label="حالت نمایش">
+          <button type="button" id="btnGridView" class="active" title="نمایش شبکه‌ای">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </button>
+          <button type="button" id="btnListView" title="نمایش لیستی">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container" id="menuContainer"></main>
+
+  <section class="container">
+    <div class="order-info-box">
+      <div>
+        <h3>نحوه ثبت سفارش و همکاری با کافه‌ها</h3>
+        <p id="elOrderNote"></p>
+      </div>
+      <div class="social-links" id="elSocialLinks"></div>
+    </div>
+  </section>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <a id="ctaCall" href="#" class="cta-primary">تماس تلفنی سفارش</a>
+      <a id="ctaWhatsapp" href="#" target="_blank" rel="noopener" class="cta-secondary">پیام در واتساپ</a>
+    </div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-backdrop hidden" id="detailModal">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <div class="modal-img">
+        <img id="mImg" src="" alt="">
+        <button class="modal-close" type="button" id="btnCloseDetail">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-meta">
+          <h3 class="modal-title" id="mTitle"></h3>
+          <span class="serving-tag" id="mServing"></span>
+        </div>
+        <p class="modal-desc" id="mDesc"></p>
+        <div class="modal-price-row">
+          <span class="price-label">قیمت روز</span>
+          <div><span class="price-val" id="mPrice"></span><span class="price-unit">تومان</span></div>
+        </div>
+        <div class="modal-actions">
+          <a id="mOrderWa" href="#" target="_blank" rel="noopener" class="cta-primary">سفارش این آیتم در واتساپ</a>
+          <a id="mOrderCall" href="#" class="cta-secondary">تماس مستقیم</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Owner Admin Panel -->
+  <div class="admin-modal hidden" id="adminModal">
+    <div class="admin-panel">
+      <div class="admin-header">
+        <div>
+          <h2 style="font-size:16px;font-weight:800">پنل مدیریت آنلاین قیمت، مشخصات برند و QR Code</h2>
+          <p style="font-size:11.5px;color:var(--text-muted)">با اتصال یک‌باره گیت‌هاب، هر تغییری از گوشی خودتان بلافاصله روی گوشی تمام مشتریان اعمال می‌شود</p>
+        </div>
+        <button class="icon-btn" type="button" id="btnCloseAdmin">بستن &times;</button>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-atab="prices" type="button">۱. قیمت و موجودی (۲۳ آیتم)</button>
+        <button class="admin-tab" data-atab="brand" type="button">۲. اطلاعات برند و تماس</button>
+        <button class="admin-tab" data-atab="sync" type="button">۳. اتصال همگام‌سازی همه گوشی‌ها</button>
+        <button class="admin-tab" data-atab="qr" type="button">۴. ساخت QR Code چاپی</button>
+      </div>
+
+      <div class="admin-body" id="adminBody"></div>
+
+      <div class="admin-footer">
+        <span class="status-toast" id="adminToast">آماده ویرایش</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="icon-btn" type="button" id="btnExportZip">دانلود فایل زیپ سایت</button>
+          <button class="icon-btn btn-green" type="button" id="btnPublishLive">ذخیره و انتشار آنی برای همه گوشی‌ها 🚀</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/qrcode.min.js"></script>
+  <script src="assets/jszip.min.js"></script>
+  <script src="menu-data.js"></script>
+  <script>
+    (function () {
+      const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+      function toFa(str) {
+        return String(str || '').replace(/\d/g, d => FA_DIGITS[+d]);
+      }
+
+      // Proper UTF-8 <-> Base64 helpers for Persian text on GitHub REST API
+      function utf8ToBase64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let bin = '';
+        const chunk = 0x8000;
+        for (let i = 0; i < bytes.length; i += chunk) {
+          bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+        }
+        return btoa(bin);
+      }
+
+      function base64ToUtf8(b64) {
+        const clean = String(b64 || '').replace(/\s+/g, '');
+        const bin = atob(clean);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return new TextDecoder('utf-8').decode(bytes);
+      }
+
+      function parseMenuJs(jsText) {
+        const prefix = jsText.indexOf('{');
+        const suffix = jsText.lastIndexOf('}');
+        if (prefix === -1 || suffix === -1) return null;
+        return JSON.parse(jsText.slice(prefix, suffix + 1));
+      }
+
+      let state = JSON.parse(JSON.stringify(window.MENU_DATA));
+
+      // Auto-detect GitHub owner & repo if hosted on *.github.io
+      function detectCloudRepo() {
+        const savedCfg = JSON.parse(localStorage.getItem('lotus_gh_cfg_v1') || '{}');
+        let ghOwner = savedCfg.ghOwner || (state.cloud && state.cloud.ghOwner) || '';
+        let ghRepo = savedCfg.ghRepo || (state.cloud && state.cloud.ghRepo) || '';
+        let ghBranch = savedCfg.ghBranch || (state.cloud && state.cloud.ghBranch) || 'main';
+
+        if (location.hostname.endsWith('.github.io')) {
+          const detectedOwner = location.hostname.replace('.github.io', '');
+          const seg = location.pathname.split('/').filter(Boolean)[0];
+          ghOwner = detectedOwner;
+          ghRepo = seg || (detectedOwner + '.github.io');
+        }
+        return { ghOwner, ghRepo, ghBranch, token: savedCfg.token || '' };
+      }
+
+      let activeCat = 'all';
+      let searchQuery = '';
+      let viewMode = localStorage.getItem('bakery_view_mode') || 'grid';
+      let currentAdminTab = 'prices';
+
+      function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        document.getElementById('themeIcon').textContent = t === 'dark' ? '☀️' : '🌙';
+        document.getElementById('themeLabel').textContent = t === 'dark' ? 'روشن' : 'تیره';
+      }
+      applyTheme(localStorage.getItem('bakery_theme') || state.brand.defaultTheme || 'light');
+
+      document.getElementById('btnThemeToggle').addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('bakery_theme', next);
+        applyTheme(next);
+      });
+
+      const isPreviewOrAdmin = location.search.includes('admin=1') ||
+        location.hostname === 'localhost' ||
+        location.hostname === '127.0.0.1' ||
+        location.hostname.endsWith('.e2b.app');
+      if (isPreviewOrAdmin) {
+        document.getElementById('btnOpenAdmin').classList.remove('hidden');
+      }
+
+      let tapCount = 0, tapTimer = null;
+      document.getElementById('elBrandName').addEventListener('click', () => {
+        tapCount++;
+        clearTimeout(tapTimer);
+        tapTimer = setTimeout(() => { tapCount = 0; }, 1400);
+        if (tapCount >= 5) {
+          tapCount = 0;
+          openAdmin();
+        }
+      });
+
+      // Live fresh data fetch so ALL phones always display the latest saved prices immediately!
+      async function syncLatestFromNetwork() {
+        try {
+          // 1. Fresh cache-busted fetch from same origin first (works 100% on national internet without VPN)
+          const rLocal = await fetch('menu-data.js?v=' + Date.now(), { cache: 'no-store' });
+          if (rLocal.ok) {
+            const parsedLocal = parseMenuJs(await rLocal.text());
+            if (parsedLocal && (!state.updatedAt || (parsedLocal.updatedAt || 0) >= (state.updatedAt || 0))) {
+              state = parsedLocal;
+              renderAll();
+            }
+          }
+        } catch (_) {}
+
+        try {
+          // 2. Also check GitHub API directly so even 1 second after saving (before Pages CDN rebuild finishes), all phones see the instant update!
+          const cfg = detectCloudRepo();
+          if (cfg.ghOwner && cfg.ghRepo) {
+            const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.ghOwner)}/${encodeURIComponent(cfg.ghRepo)}/contents/menu-data.js?ref=${encodeURIComponent(cfg.ghBranch)}&t=${Date.now()}`;
+            const res = await fetch(apiUrl, { cache: 'no-store' });
+            if (res.ok) {
+              const meta = await res.json();
+              if (meta && meta.content) {
+                const parsedRemote = parseMenuJs(base64ToUtf8(meta.content));
+                if (parsedRemote && (parsedRemote.updatedAt || 0) >= (state.updatedAt || 0)) {
+                  state = parsedRemote;
+                  if (!localStorage.getItem('bakery_theme') && state.brand.defaultTheme) {
+                    applyTheme(state.brand.defaultTheme);
+                  }
+                  renderAll();
+                }
+              }
+            }
+          }
+        } catch (_) {}
+      }
+
+      function renderAll() {
+        document.title = state.brand.name + ' | منوی آنلاین و لیست قیمت';
+        document.getElementById('elBrandName').textContent = state.brand.name;
+        document.getElementById('elTagline').textContent = state.brand.tagline;
+        document.getElementById('elStandardBadge').textContent = state.brand.standardBadge;
+        document.getElementById('elOrderNote').textContent = state.brand.orderNote;
+
+        const cleanPhone = (state.brand.phone || '').replace(/\s+/g, '');
+        const cleanWa = (state.brand.whatsapp || '').replace(/[^\d]/g, '');
+        document.getElementById('ctaCall').href = 'tel:' + cleanPhone;
+        document.getElementById('ctaWhatsapp').href = 'https://wa.me/' + cleanWa + '?text=' + encodeURIComponent('سلام وقت بخیر، از طریق منوی آنلاین برای ثبت سفارش پیام می‌دهم.');
+
+        const socialHtml = [];
+        if (state.brand.phone) {
+          socialHtml.push(`<a class="social-pill" href="tel:${cleanPhone}">تلفن: <span dir="ltr">${toFa(state.brand.phone)}</span></a>`);
+        }
+        if (state.brand.instagram) {
+          const ig = state.brand.instagram.replace(/^@/, '');
+          socialHtml.push(`<a class="social-pill" href="https://instagram.com/${ig}" target="_blank" rel="noopener">اینستاگرام: <span dir="ltr">@${ig}</span></a>`);
+        }
+        if (state.brand.telegram) {
+          const tg = state.brand.telegram.replace(/^@/, '');
+          socialHtml.push(`<a class="social-pill" href="https://t.me/${tg}" target="_blank" rel="noopener">تلگرام: <span dir="ltr">@${tg}</span></a>`);
+        }
+        document.getElementById('elSocialLinks').innerHTML = socialHtml.join('');
+
+        const totalCount = state.items.length;
+        const tabs = [{ id: 'all', label: `همه (${toFa(totalCount)})` }].concat(
+          state.categories.map(c => {
+            const cnt = state.items.filter(i => i.category === c.id).length;
+            return { id: c.id, label: `${c.title} (${toFa(cnt)})` };
+          })
+        );
+        const tabsEl = document.getElementById('categoryTabs');
+        tabsEl.innerHTML = tabs.map(t =>
+          `<button type="button" class="tab-pill ${activeCat === t.id ? 'active' : ''}" data-cat="${t.id}">${t.label}</button>`
+        ).join('');
+        tabsEl.querySelectorAll('.tab-pill').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeCat = btn.dataset.cat;
+            renderAll();
+          });
+        });
+
+        document.getElementById('btnGridView').classList.toggle('active', viewMode === 'grid');
+        document.getElementById('btnListView').classList.toggle('active', viewMode === 'list');
+
+        const q = searchQuery.trim().toLowerCase();
+        const catsToShow = activeCat === 'all'
+          ? state.categories
+          : state.categories.filter(c => c.id === activeCat);
+
+        let html = '';
+        let anyShown = false;
+        for (const cat of catsToShow) {
+          const list = state.items.filter(item => {
+            if (item.category !== cat.id) return false;
+            if (!q) return true;
+            return (item.name + ' ' + item.desc + ' ' + item.serving).toLowerCase().includes(q);
+          });
+          if (!list.length) continue;
+          anyShown = true;
+          html += `
+            <section class="menu-section">
+              <div class="sec-header">
+                <h2>${cat.title}</h2>
+                <p>${cat.subtitle}</p>
+              </div>
+              <div class="${viewMode === 'grid' ? 'items-grid' : 'items-list'}">
+                ${list.map(item => `
+                  <article class="card" data-id="${item.id}">
+                    <div class="card-img-wrap">
+                      <img src="${item.image}" alt="${item.name}" loading="lazy">
+                      ${item.available === false ? '<div class="soldout-overlay"><span>اتمام موجودی روز</span></div>' : ''}
+                    </div>
+                    <div class="card-body">
+                      <div>
+                        <div class="card-top">
+                          <h3 class="card-title">${item.name}</h3>
+                          <span class="serving-tag">${toFa(item.serving)}</span>
+                        </div>
+                        <p class="card-desc">${item.desc}</p>
+                      </div>
+                      <div class="card-footer">
+                        <span class="price-label">${item.available === false ? 'ناموجود' : 'قیمت'}</span>
+                        <div>
+                          <span class="price-val">${toFa(item.price)}</span>
+                          <span class="price-unit">تومان</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                `).join('')}
+              </div>
+            </section>`;
+        }
+
+        if (!anyShown) {
+          html = `<div class="empty-state">موردی با عبارت «${searchQuery}» یافت نشد.</div>`;
+        }
+
+        const container = document.getElementById('menuContainer');
+        container.innerHTML = html;
+        container.querySelectorAll('.card').forEach(card => {
+          card.addEventListener('click', () => openDetail(card.dataset.id));
+        });
+      }
+
+      document.getElementById('searchInput').addEventListener('input', e => {
+        searchQuery = e.target.value;
+        renderAll();
+      });
+
+      document.getElementById('btnGridView').addEventListener('click', () => {
+        viewMode = 'grid';
+        localStorage.setItem('bakery_view_mode', 'grid');
+        renderAll();
+      });
+
+      document.getElementById('btnListView').addEventListener('click', () => {
+        viewMode = 'list';
+        localStorage.setItem('bakery_view_mode', 'list');
+        renderAll();
+      });
+
+      function openDetail(id) {
+        const item = state.items.find(x => x.id === id);
+        if (!item) return;
+        document.getElementById('mImg').src = item.image;
+        document.getElementById('mImg').alt = item.name;
+        document.getElementById('mTitle').textContent = item.name;
+        document.getElementById('mServing').textContent = toFa(item.serving);
+        document.getElementById('mDesc').textContent = item.desc;
+        document.getElementById('mPrice').textContent = toFa(item.price);
+        const cleanWa = (state.brand.whatsapp || '').replace(/[^\d]/g, '');
+        const cleanPhone = (state.brand.phone || '').replace(/\s+/g, '');
+        const msg = `سلام وقت بخیر، برای سفارش «${item.name} (${item.serving})» پیام می‌دهم.`;
+        document.getElementById('mOrderWa').href = `https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`;
+        document.getElementById('mOrderCall').href = `tel:${cleanPhone}`;
+        document.getElementById('detailModal').classList.remove('hidden');
+      }
+
+      document.getElementById('btnCloseDetail').addEventListener('click', () => {
+        document.getElementById('detailModal').classList.add('hidden');
+      });
+      document.getElementById('detailModal').addEventListener('click', e => {
+        if (e.target.id === 'detailModal') e.target.classList.add('hidden');
+      });
+
+      // Admin Modal
+      function openAdmin() {
+        document.getElementById('adminModal').classList.remove('hidden');
+        renderAdminTab();
+      }
+
+      document.getElementById('btnOpenAdmin').addEventListener('click', openAdmin);
+      document.getElementById('btnCloseAdmin').addEventListener('click', () => {
+        document.getElementById('adminModal').classList.add('hidden');
+      });
+
+      document.querySelectorAll('.admin-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          collectAdminInputs();
+          currentAdminTab = btn.dataset.atab;
+          document.querySelectorAll('.admin-tab').forEach(b => b.classList.toggle('active', b === btn));
+          renderAdminTab();
+        });
+      });
+
+      function makeQrSvgString(url, sizePx) {
+        const qr = qrcode(0, 'M');
+        qr.addData(url || 'https://lotuscaker.github.io');
+        qr.make();
+        const count = qr.getModuleCount();
+        const margin = 3;
+        const total = count + margin * 2;
+        let path = '';
+        for (let r = 0; r < count; r++) {
+          for (let c = 0; c < count; c++) {
+            if (qr.isDark(r, c)) path += `M${c + margin},${r + margin}h1v1h-1z`;
+          }
+        }
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${total}" width="${sizePx}" height="${sizePx}" shape-rendering="crispEdges"><rect width="${total}" height="${total}" fill="#FFFFFF"/><path d="${path}" fill="#1E1B18"/></svg>`;
+      }
+
+      function renderAdminTab() {
+        const body = document.getElementById('adminBody');
+        if (currentAdminTab === 'brand') {
+          const b = state.brand;
+          body.innerHTML = `
+            <div class="form-grid">
+              <div class="field"><label>نام برند / قنادی</label><input id="f_name" value="${b.name || ''}"></div>
+              <div class="field"><label>نشان بالای عنوان</label><input id="f_badge" value="${b.standardBadge || ''}"></div>
+              <div class="field" style="grid-column:1/-1"><label>توضیح کوتاه زیر نام برند</label><input id="f_tagline" value="${b.tagline || ''}"></div>
+              <div class="field"><label>شماره تماس (برای دکمه تماس)</label><input dir="ltr" id="f_phone" value="${b.phone || ''}"></div>
+              <div class="field"><label>شماره واتساپ با پیش‌شماره ۹۸ (بدون +)</label><input dir="ltr" id="f_wa" value="${b.whatsapp || ''}"></div>
+              <div class="field"><label>آیدی پیج اینستاگرام</label><input dir="ltr" id="f_ig" value="${b.instagram || ''}"></div>
+              <div class="field"><label>آیدی تلگرام</label><input dir="ltr" id="f_tg" value="${b.telegram || ''}"></div>
+              <div class="field"><label>حالت رنگ پیش‌فرض سایت</label>
+                <select id="f_theme">
+                  <option value="light" ${b.defaultTheme !== 'dark' ? 'selected' : ''}>روشن مینیمال (پیشنهادی)</option>
+                  <option value="dark" ${b.defaultTheme === 'dark' ? 'selected' : ''}>تیره لوکس</option>
+                </select>
+              </div>
+              <div class="field" style="grid-column:1/-1"><label>توضیح شرایط ثبت سفارش در پایین صفحه</label><input id="f_note" value="${b.orderNote || ''}"></div>
+            </div>`;
+        } else if (currentAdminTab === 'prices') {
+          body.innerHTML = `
+            <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">قیمت‌ها و موجودی را ویرایش کنید و دکمه سبز پایین («ذخیره و انتشار آنی برای همه گوشی‌ها») را بزنید:</div>
+            ${state.items.map((it, idx) => `
+              <div class="edit-item-row" data-idx="${idx}">
+                <img src="${it.image}" alt="">
+                <div class="field"><label>نام محصول</label><input class="ei-name" value="${it.name}"></div>
+                <div class="field"><label>قیمت (تومان)</label><input class="ei-price" value="${it.price}"></div>
+                <div class="field"><label>اسلایس / واحد</label><input class="ei-serv" value="${it.serving}"></div>
+                <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;padding-top:16px">
+                  <input type="checkbox" class="ei-avail" ${it.available !== false ? 'checked' : ''}> موجود
+                </label>
+                <div class="field" style="grid-column:2/-1"><input class="ei-desc" value="${it.desc}" placeholder="توضیح ترکیبات"></div>
+              </div>
+            `).join('')}`;
+        } else if (currentAdminTab === 'sync') {
+          const cfg = detectCloudRepo();
+          body.innerHTML = `
+            <div class="info-callout">
+              <strong>راه‌اندازی ۱۰۰٪ خودکار سایت بدون فیلتر + همگام‌سازی آنی همه گوشی‌ها (فقط در ۱ دقیقه!):</strong><br>
+              ۱. یک اکانت رایگان در <a href="https://github.com/signup" target="_blank" rel="noopener" style="color:var(--accent);font-weight:800">github.com</a> بسازید (مثلاً با نام <code>lotuscaker</code>).<br>
+              ۲. روی این لینک آماده کلیک کنید: <a href="https://github.com/settings/tokens/new?scopes=repo&description=LotusMenu" target="_blank" rel="noopener" style="color:var(--accent);font-weight:800">ساخت کلید دسترسی خودکار گیت‌هاب ↗</a>، پایین صفحه دکمه سبز <strong>Generate token</strong> را بزنید و کد ساخته‌شده (که با <code>ghp_</code> شروع می‌شود) را کپی و در کادر زیر وارد کنید.<br>
+              ۳. دکمه <strong>«ساخت و آپلود خودکار کل سایت بدون فیلتر 🚀»</strong> را بزنید — خودش مخزن و سایت <code>github.io</code> بدون فیلترشکن را می‌سازد و از این به بعد هر تغییری بدهید روی <strong>گوشی همه مشتریان</strong> فوراً اعمال می‌شود!
+            </div>
+            <div class="form-grid">
+              <div class="field" style="grid-column:1/-1">
+                <label>کلید دسترسی گیت‌هاب (Personal Access Token — فقط در مرورگر خودتان ذخیره می‌شود)</label>
+                <input dir="ltr" type="password" id="f_ghToken" value="${cfg.token}" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+              </div>
+              <div class="field">
+                <label>نام کاربری گیت‌هاب (خودکار تشخیص داده می‌شود)</label>
+                <input dir="ltr" id="f_ghOwner" value="${cfg.ghOwner}" placeholder="خودکار پر می‌شود">
+              </div>
+              <div class="field">
+                <label>نام مخزن (خودکار ساخته می‌شود)</label>
+                <input dir="ltr" id="f_ghRepo" value="${cfg.ghRepo}" placeholder="خودکار پر می‌شود">
+              </div>
+              <input type="hidden" id="f_ghBranch" value="${cfg.ghBranch || 'main'}">
+            </div>
+            <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+              <button type="button" class="icon-btn btn-green" id="btnAutoDeployGithub" style="height:44px;padding:0 18px;font-size:13.2px">
+                ساخت و آپلود خودکار کل سایت بدون فیلتر در گیت‌هاب 🚀
+              </button>
+              <span id="deployProgressTxt" style="font-size:12.5px;font-weight:700;color:var(--accent)"></span>
+            </div>
+            <div id="deployedUrlBox" class="hidden" style="margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--surface-soft);border:1px solid var(--border)"></div>`;
+
+          document.getElementById('btnAutoDeployGithub').addEventListener('click', autoDeployWholeSiteToGithub);
+        } else {
+          const urlVal = state.brand.publicUrl || window.location.origin;
+          body.innerHTML = `
+            <div style="max-width:560px;margin:0 auto">
+              <div class="field">
+                <label>آدرس دائمی و بدون فیلتر منوی شما (مثلاً https://lotuscaker.github.io):</label>
+                <input dir="ltr" id="f_publicUrl" value="${urlVal}" placeholder="https://lotuscaker.github.io">
+              </div>
+              <div class="qr-preview-box">
+                <div id="qrCanvasWrap">${makeQrSvgString(urlVal, 200)}</div>
+                <div style="font-weight:800;font-size:14px">${state.brand.name}</div>
+                <div style="font-size:11px;color:#6E655D;direction:ltr;word-break:break-all" id="qrUrlCaption">${urlVal}</div>
+              </div>
+              <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+                <button type="button" class="icon-btn admin-trigger" id="btnDlSvg">دانلود وکتور چاپی QR (SVG)</button>
+                <button type="button" class="icon-btn" id="btnDlPng">دانلود تصویر باکیفیت ۲۰۰۰ پیکسلی (PNG)</button>
+              </div>
+            </div>`;
+
+          const urlInp = document.getElementById('f_publicUrl');
+          urlInp.addEventListener('input', () => {
+            const v = urlInp.value.trim() || 'https://lotuscaker.github.io';
+            state.brand.publicUrl = v;
+            document.getElementById('qrCanvasWrap').innerHTML = makeQrSvgString(v, 200);
+            document.getElementById('qrUrlCaption').textContent = v;
+          });
+
+          document.getElementById('btnDlSvg').addEventListener('click', () => {
+            const svg = makeQrSvgString(state.brand.publicUrl || urlVal, 1000);
+            triggerDownload(new Blob([svg], { type: 'image/svg+xml;charset=utf-8' }), 'QR_Code_Menu_Vector.svg');
+          });
+
+          document.getElementById('btnDlPng').addEventListener('click', () => {
+            const svg = makeQrSvgString(state.brand.publicUrl || urlVal, 2000);
+            const img = new Image();
+            const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+            const u = URL.createObjectURL(svgBlob);
+            img.onload = () => {
+              const c = document.createElement('canvas');
+              c.width = 2000; c.height = 2000;
+              const ctx = c.getContext('2d');
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(0, 0, 2000, 2000);
+              ctx.drawImage(img, 0, 0, 2000, 2000);
+              URL.revokeObjectURL(u);
+              c.toBlob(b => triggerDownload(b, 'QR_Code_Menu_2000px.png'), 'image/png');
+            };
+            img.src = u;
+          });
+        }
+      }
+
+      function collectAdminInputs() {
+        const fName = document.getElementById('f_name');
+        if (fName) {
+          state.brand.name = fName.value;
+          state.brand.standardBadge = document.getElementById('f_badge').value;
+          state.brand.tagline = document.getElementById('f_tagline').value;
+          state.brand.phone = document.getElementById('f_phone').value;
+          state.brand.whatsapp = document.getElementById('f_wa').value;
+          state.brand.instagram = document.getElementById('f_ig').value;
+          state.brand.telegram = document.getElementById('f_tg').value;
+          state.brand.defaultTheme = document.getElementById('f_theme').value;
+          state.brand.orderNote = document.getElementById('f_note').value;
+        }
+        document.querySelectorAll('.edit-item-row').forEach(row => {
+          const idx = +row.dataset.idx;
+          state.items[idx].name = row.querySelector('.ei-name').value;
+          state.items[idx].price = row.querySelector('.ei-price').value;
+          state.items[idx].serving = row.querySelector('.ei-serv').value;
+          state.items[idx].desc = row.querySelector('.ei-desc').value;
+          state.items[idx].available = row.querySelector('.ei-avail').checked;
+        });
+        const ghOwnerEl = document.getElementById('f_ghOwner');
+        if (ghOwnerEl) {
+          const cfgObj = {
+            ghOwner: ghOwnerEl.value.trim(),
+            ghRepo: document.getElementById('f_ghRepo').value.trim(),
+            ghBranch: document.getElementById('f_ghBranch').value.trim() || 'main',
+            token: document.getElementById('f_ghToken').value.trim()
+          };
+          localStorage.setItem('lotus_gh_cfg_v1', JSON.stringify(cfgObj));
+          state.cloud = { ghOwner: cfgObj.ghOwner, ghRepo: cfgObj.ghRepo, ghBranch: cfgObj.ghBranch };
+        }
+        const pub = document.getElementById('f_publicUrl');
+        if (pub) state.brand.publicUrl = pub.value.trim();
+      }
+
+      function arrayBufferToBase64(buf) {
+        const bytes = new Uint8Array(buf);
+        let bin = '';
+        const chunk = 0x8000;
+        for (let i = 0; i < bytes.length; i += chunk) {
+          bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+        }
+        return btoa(bin);
+      }
+
+      async function autoDeployWholeSiteToGithub() {
+        collectAdminInputs();
+        const prog = document.getElementById('deployProgressTxt');
+        const box = document.getElementById('deployedUrlBox');
+        const cfg = detectCloudRepo();
+        const token = cfg.token;
+        if (!token) {
+          prog.textContent = 'لطفاً ابتدا کد کلید دسترسی (ghp_...) را در کادر بالا وارد کنید.';
+          return;
+        }
+        const headers = {
+          'Authorization': 'Bearer ' + token,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        };
+        try {
+          prog.textContent = '۱/۴ در حال بررسی حساب گیت‌هاب شما...';
+          const uRes = await fetch('https://api.github.com/user', { headers });
+          if (!uRes.ok) throw new Error('کلید دسترسی نامعتبر است (دوباره کپی کنید)');
+          const userObj = await uRes.json();
+          const owner = userObj.login;
+          const repo = owner + '.github.io';
+          document.getElementById('f_ghOwner').value = owner;
+          document.getElementById('f_ghRepo').value = repo;
+
+          prog.textContent = '۲/۴ در حال ساخت خودکار مخزن ' + repo + '...';
+          let repoRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers });
+          if (repoRes.status === 404) {
+            repoRes = await fetch('https://api.github.com/user/repos', {
+              method: 'POST',
+              headers,
+              body: JSON.stringify({ name: repo, private: false, auto_init: true, description: 'Online Bakery Menu' })
+            });
+            if (!repoRes.ok) throw new Error('اجازه ساخت مخزن وجود ندارد (تیک repo را در ساخت توکن بزنید)');
+            await new Promise(r => setTimeout(r, 1800));
+          }
+          const repoData = await repoRes.json();
+          const branch = repoData.default_branch || 'main';
+
+          const finalUrl = 'https://' + owner.toLowerCase() + '.github.io';
+          state.cloud = { ghOwner: owner, ghRepo: repo, ghBranch: branch };
+          state.brand.publicUrl = finalUrl;
+          state.updatedAt = Date.now();
+          localStorage.setItem('lotus_gh_cfg_v1', JSON.stringify({ ghOwner: owner, ghRepo: repo, ghBranch: branch, token }));
+
+          const refRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${branch}`, { headers });
+          const refData = await refRes.json();
+          const parentSha = refData.object.sha;
+
+          // Collect all 32 files of the site
+          const indexHtmlText = await (await fetch('index.html?v=' + Date.now())).text();
+          const menuDataText = 'window.MENU_DATA = ' + JSON.stringify(state, null, 2) + ';\n';
+          const fileEntries = [
+            { path: 'index.html', b64: utf8ToBase64(indexHtmlText) },
+            { path: 'menu-data.js', b64: utf8ToBase64(menuDataText) },
+            { path: '.nojekyll', b64: '' }
+          ];
+
+          const binaryPaths = [
+            'assets/qrcode.min.js',
+            'assets/jszip.min.js',
+            'assets/fonts/Vazirmatn-Light.woff2',
+            'assets/fonts/Vazirmatn-Regular.woff2',
+            'assets/fonts/Vazirmatn-Medium.woff2',
+            'assets/fonts/Vazirmatn-Bold.woff2',
+            'assets/fonts/Vazirmatn-ExtraBold.woff2'
+          ].concat(state.items.map(i => i.image));
+
+          for (const bp of binaryPaths) {
+            const ab = await (await fetch(bp)).arrayBuffer();
+            fileEntries.push({ path: bp, b64: arrayBufferToBase64(ab) });
+          }
+
+          const treeItems = [];
+          const batchSize = 6;
+          for (let i = 0; i < fileEntries.length; i += batchSize) {
+            const slice = fileEntries.slice(i, i + batchSize);
+            prog.textContent = `۳/۴ در حال آپلود فایل‌ها (${Math.min(i + batchSize, fileEntries.length)} از ${fileEntries.length})...`;
+            const created = await Promise.all(slice.map(async fe => {
+              const bRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/blobs`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({ content: fe.b64, encoding: 'base64' })
+              });
+              if (!bRes.ok) throw new Error('خطا در آپلود فایل ' + fe.path);
+              const bJson = await bRes.json();
+              return { path: fe.path, mode: '100644', type: 'blob', sha: bJson.sha };
+            }));
+            treeItems.push(...created);
+          }
+
+          prog.textContent = '۴/۴ در حال فعال‌سازی نهایی سایت بدون فیلتر...';
+          const tRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ tree: treeItems })
+          });
+          const tJson = await tRes.json();
+
+          const cRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/commits`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ message: 'Deploy digital bakery menu', tree: tJson.sha, parents: [parentSha] })
+          });
+          const cJson = await cRes.json();
+
+          await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs/heads/${branch}`, {
+            method: 'PATCH',
+            headers,
+            body: JSON.stringify({ sha: cJson.sha, force: true })
+          });
+
+          // Enable GitHub Pages (ignore 409 if already active)
+          await fetch(`https://api.github.com/repos/${owner}/${repo}/pages`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ source: { branch, path: '/' } })
+          }).catch(() => {});
+
+          prog.textContent = 'تبریک! کل سایت با موفقیت منتشر شد ✓';
+          if (box) {
+            box.classList.remove('hidden');
+            box.innerHTML = `
+              <div style="font-weight:800;font-size:14px;margin-bottom:6px;color:var(--ok)">آدرس دائمی و بدون فیلتر منوی شما آماده شد (حدود ۶۰ ثانیه اول صبر کنید تا فعال شود):</div>
+              <a href="${finalUrl}" target="_blank" rel="noopener" dir="ltr" style="font-size:15px;font-weight:800;color:var(--accent)">${finalUrl}</a>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:6px">حالا به تب ۴ («ساخت QR Code چاپی») بروید و کد QR همین آدرس را دانلود کنید!</div>`;
+          }
+        } catch (err) {
+          prog.textContent = 'خطا: ' + err.message;
+        }
+      }
+
+      function triggerDownload(blob, filename) {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      }
+
+      // Live Push to Server / GitHub so ALL phones immediately see updated prices!
+      document.getElementById('btnPublishLive').addEventListener('click', async () => {
+        const toast = document.getElementById('adminToast');
+        collectAdminInputs();
+        state.updatedAt = Date.now();
+        applyTheme(state.brand.defaultTheme || 'light');
+        renderAll();
+
+        // 1. If running in Arena preview environment, persist directly on preview server too
+        let savedLocalServer = false;
+        try {
+          const r = await fetch('api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(state)
+          });
+          if (r.ok) savedLocalServer = true;
+        } catch (_) {}
+
+        // 2. Push directly to GitHub repository via GitHub Contents API if token is set!
+        const cfg = detectCloudRepo();
+        if (cfg.token && cfg.ghOwner && cfg.ghRepo) {
+          toast.textContent = 'در حال انتشار آنی روی اینترنت برای همه گوشی‌ها...';
+          try {
+            const apiBase = `https://api.github.com/repos/${encodeURIComponent(cfg.ghOwner)}/${encodeURIComponent(cfg.ghRepo)}/contents/menu-data.js`;
+            const headers = {
+              'Authorization': 'Bearer ' + cfg.token,
+              'Accept': 'application/vnd.github+json',
+              'Content-Type': 'application/json'
+            };
+
+            let currentSha = undefined;
+            const getRes = await fetch(apiBase + '?ref=' + encodeURIComponent(cfg.ghBranch) + '&t=' + Date.now(), { headers });
+            if (getRes.ok) {
+              const cur = await getRes.json();
+              currentSha = cur.sha;
+            }
+
+            const fileText = 'window.MENU_DATA = ' + JSON.stringify(state, null, 2) + ';\n';
+            const bodyPayload = {
+              message: 'Update menu prices & details',
+              content: utf8ToBase64(fileText),
+              branch: cfg.ghBranch
+            };
+            if (currentSha) bodyPayload.sha = currentSha;
+
+            const putRes = await fetch(apiBase, {
+              method: 'PUT',
+              headers,
+              body: JSON.stringify(bodyPayload)
+            });
+
+            if (!putRes.ok) {
+              const errJson = await putRes.json().catch(() => ({}));
+              throw new Error(errJson.message || ('کد خطا ' + putRes.status));
+            }
+            toast.textContent = 'عالی! تغییرات روی سرور منتشر شد و روی همه گوشی‌ها فعال است ✓';
+            return;
+          } catch (err) {
+            toast.textContent = 'خطا در اتصال گیت‌هاب: ' + err.message;
+            return;
+          }
+        }
+
+        if (savedLocalServer) {
+          toast.textContent = 'در پیش‌نمایش ذخیره شد ✓ (برای سایت اصلی، توکن گیت‌هاب را در تب ۳ وارد کنید یا فایل زیپ جدید بگیرید)';
+        } else {
+          // Guide user right to Tab 3 so they connect GitHub once!
+          currentAdminTab = 'sync';
+          document.querySelectorAll('.admin-tab').forEach(b => b.classList.toggle('active', b.dataset.atab === 'sync'));
+          renderAdminTab();
+          toast.textContent = 'برای اعمال روی همه گوشی‌ها، یک‌بار کلید گیت‌هاب را در این تب وارد کنید ⬆';
+        }
+      });
+
+      document.getElementById('btnExportZip').addEventListener('click', async () => {
+        const toast = document.getElementById('adminToast');
+        toast.textContent = 'در حال آماده‌سازی فایل زیپ کامل سایت...';
+        collectAdminInputs();
+        state.updatedAt = Date.now();
+        renderAll();
+        try {
+          const zip = new JSZip();
+          const indexRes = await fetch('index.html?v=' + Date.now());
+          zip.file('index.html', await indexRes.text());
+          zip.file('menu-data.js', 'window.MENU_DATA = ' + JSON.stringify(state, null, 2) + ';\n');
+
+          const staticAssets = [
+            'assets/qrcode.min.js',
+            'assets/jszip.min.js',
+            'assets/fonts/Vazirmatn-Light.woff2',
+            'assets/fonts/Vazirmatn-Regular.woff2',
+            'assets/fonts/Vazirmatn-Medium.woff2',
+            'assets/fonts/Vazirmatn-Bold.woff2',
+            'assets/fonts/Vazirmatn-ExtraBold.woff2'
+          ].concat(state.items.map(i => i.image));
+
+          for (const rel of staticAssets) {
+            const r = await fetch(rel);
+            zip.file(rel, await r.arrayBuffer());
+          }
+
+          const outBlob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+          triggerDownload(outBlob, 'منوی_آنلاین_آماده_آپلود.zip');
+          toast.textContent = 'فایل زیپ آماده آپلود دانلود شد ✓';
+        } catch (err) {
+          toast.textContent = 'خطا در ساخت زیپ: ' + err.message;
+        }
+      });
+
+      renderAll();
+      syncLatestFromNetwork();
+    })();
+  </script>
+</body>
+</html>
