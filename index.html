@@ -1102,12 +1102,12 @@
                 <input dir="ltr" type="password" id="f_ghToken" value="${cfg.token}" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
               </div>
               <div class="field">
-                <label>نام کاربری گیت‌هاب (خودکار تشخیص داده می‌شود)</label>
-                <input dir="ltr" id="f_ghOwner" value="${cfg.ghOwner}" placeholder="خودکار پر می‌شود">
+                <label>نام اکانت یا سازمان گیت‌هاب (اختیاری — مثلاً <code>lotuscaker-menu</code>)</label>
+                <input dir="ltr" id="f_ghOwner" value="${cfg.ghOwner}" placeholder="خالی = اکانت فعلی شما">
               </div>
               <div class="field">
-                <label>نام مخزن (خودکار ساخته می‌شود)</label>
-                <input dir="ltr" id="f_ghRepo" value="${cfg.ghRepo}" placeholder="خودکار پر می‌شود">
+                <label>نام دلخواه مخزن سایت (مثلاً <code>lotuscaker_menu</code> یا خالی برای ریشه)</label>
+                <input dir="ltr" id="f_ghRepo" value="${cfg.ghRepo}" placeholder="مثلاً lotuscaker_menu">
               </div>
               <input type="hidden" id="f_ghBranch" value="${cfg.ghBranch || 'main'}">
             </div>
@@ -1238,15 +1238,36 @@
           const uRes = await fetch('https://api.github.com/user', { headers });
           if (!uRes.ok) throw new Error('کلید دسترسی نامعتبر است (دوباره کپی کنید)');
           const userObj = await uRes.json();
-          const owner = userObj.login;
-          const repo = owner + '.github.io';
+          const loginName = userObj.login;
+
+          const typedOwner = (document.getElementById('f_ghOwner').value || '').trim();
+          const typedRepo = (document.getElementById('f_ghRepo').value || '').trim();
+
+          let owner = loginName;
+          let isOrg = false;
+          if (typedOwner && typedOwner.toLowerCase() !== loginName.toLowerCase()) {
+            const orgCheck = await fetch(`https://api.github.com/orgs/${encodeURIComponent(typedOwner)}/memberships/${encodeURIComponent(loginName)}`, { headers });
+            if (orgCheck.ok) {
+              owner = typedOwner;
+              isOrg = true;
+            }
+          }
+
+          let repo = owner + '.github.io';
+          if (typedRepo && !typedRepo.toLowerCase().endsWith('.github.io')) {
+            repo = typedRepo.replace(/\s+/g, '-');
+          }
+
           document.getElementById('f_ghOwner').value = owner;
           document.getElementById('f_ghRepo').value = repo;
 
           prog.textContent = '۲/۴ در حال ساخت خودکار مخزن ' + repo + '...';
           let repoRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers });
           if (repoRes.status === 404) {
-            repoRes = await fetch('https://api.github.com/user/repos', {
+            const createEndpoint = isOrg
+              ? `https://api.github.com/orgs/${owner}/repos`
+              : 'https://api.github.com/user/repos';
+            repoRes = await fetch(createEndpoint, {
               method: 'POST',
               headers,
               body: JSON.stringify({ name: repo, private: false, auto_init: true, description: 'Online Bakery Menu' })
@@ -1257,7 +1278,10 @@
           const repoData = await repoRes.json();
           const branch = repoData.default_branch || 'main';
 
-          const finalUrl = 'https://' + owner.toLowerCase() + '.github.io';
+          const isRootPages = repo.toLowerCase() === (owner.toLowerCase() + '.github.io');
+          const finalUrl = isRootPages
+            ? ('https://' + owner.toLowerCase() + '.github.io')
+            : ('https://' + owner.toLowerCase() + '.github.io/' + repo + '/');
           state.cloud = { ghOwner: owner, ghRepo: repo, ghBranch: branch };
           state.brand.publicUrl = finalUrl;
           state.updatedAt = Date.now();
